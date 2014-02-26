@@ -36,12 +36,18 @@ f=(x) ->
 		
 		e_mark=r_mark.exec(a.mark.value)
 		e_num=r_num.exec(a.num.value)
-		$('#main').append("<hr><div class='item'>"+a.biblio.value+"<br>"+ba(e_mark,e_num)+"</div>")
+		mark=ba(e_mark,e_num)
+		
+		if a.biblio?
+			e_bibl=a.biblio.value
+			e_bibl=e_bibl.replace("Библиографическая ссылка:","","gi")
+			alert(e_bibl)
+		$('#main').append("<hr><div class='item'>"+e_bibl+"<p>"+"Рейтинг:"+mark+"</div>")
 
 
 
 ba=(m,n) ->
-	y=10.0
+	y=30.0
 	a=n*m/(n+y)
 	b=y*7.2453/(n+y)
 	return a+b
